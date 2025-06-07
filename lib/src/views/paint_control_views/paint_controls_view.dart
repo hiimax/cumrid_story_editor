@@ -1,10 +1,11 @@
 import 'dart:io';
+
+import 'package:cumrid_story_editor/src/controller/controller.dart';
+import 'package:cumrid_story_editor/src/models/simple_sketecher.dart';
+import 'package:cumrid_story_editor/src/models/stroke.dart';
+import 'package:cumrid_story_editor/src/widgets/hue_color_picker_slider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_story_editor/src/controller/controller.dart';
-import 'package:flutter_story_editor/src/models/simple_sketecher.dart';
-import 'package:flutter_story_editor/src/models/stroke.dart';
-import 'package:flutter_story_editor/src/widgets/hue_color_picker_slider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:perfect_freehand/perfect_freehand.dart';
 
@@ -13,28 +14,33 @@ import 'paint_top_view.dart';
 // PaintControlsView provides a customizable painting interface over an image or video.
 class PaintControlsView extends StatefulWidget {
   final File selectedFile; // The file (image/video) being edited.
-  final List<Stroke> uiEditableFileLines; // List of strokes drawn on the canvas.
-  final VoidCallback onUndoClickListener; // Callback when the undo button is pressed.
-  final Function(Stroke) onPointerDownUpdate; // Callback when a new stroke is started.
-  final FlutterStoryEditorController controller; // Controller for managing editing state.
-  final VoidCallback onDoneClickListener; // Callback when the done button is pressed.
+  final List<Stroke>
+      uiEditableFileLines; // List of strokes drawn on the canvas.
+  final VoidCallback
+      onUndoClickListener; // Callback when the undo button is pressed.
+  final Function(Stroke)
+      onPointerDownUpdate; // Callback when a new stroke is started.
+  final FlutterStoryEditorController
+      controller; // Controller for managing editing state.
+  final VoidCallback
+      onDoneClickListener; // Callback when the done button is pressed.
 
-  const PaintControlsView({
-    super.key,
-    required this.selectedFile,
-    required this.controller,
-    required this.uiEditableFileLines,
-    required this.onPointerDownUpdate,
-    required this.onUndoClickListener,
-    required this.onDoneClickListener
-  });
+  const PaintControlsView(
+      {super.key,
+      required this.selectedFile,
+      required this.controller,
+      required this.uiEditableFileLines,
+      required this.onPointerDownUpdate,
+      required this.onUndoClickListener,
+      required this.onDoneClickListener});
 
   @override
   PaintControlsViewState createState() => PaintControlsViewState();
 }
 
 class PaintControlsViewState extends State<PaintControlsView> {
-  HSVColor _pencilColor = HSVColor.fromColor(Colors.tealAccent); // Initial pencil color.
+  HSVColor _pencilColor =
+      HSVColor.fromColor(Colors.tealAccent); // Initial pencil color.
   Stroke? line; // Current stroke being drawn.
   double size = 3; // Initial stroke size.
 
@@ -44,10 +50,11 @@ class PaintControlsViewState extends State<PaintControlsView> {
     final offset = box.globalToLocal(details.position);
     final point = details.kind == PointerDeviceKind.stylus
         ? PointVector(
-      offset.dx,
-      offset.dy / 2,
-      (details.pressure - details.pressureMin) / (details.pressureMax - details.pressureMin),
-    )
+            offset.dx,
+            offset.dy / 2,
+            (details.pressure - details.pressureMin) /
+                (details.pressureMax - details.pressureMin),
+          )
         : PointVector(offset.dx, offset.dy);
     final points = [point];
     line = Stroke(points, _pencilColor.toColor(), StrokeOptions(size: size));
@@ -62,10 +69,11 @@ class PaintControlsViewState extends State<PaintControlsView> {
     final offset = box.globalToLocal(details.position);
     final point = details.kind == PointerDeviceKind.stylus
         ? PointVector(
-      offset.dx,
-      offset.dy,
-      (details.pressure - details.pressureMin) / (details.pressureMax - details.pressureMin),
-    )
+            offset.dx,
+            offset.dy,
+            (details.pressure - details.pressureMin) /
+                (details.pressureMax - details.pressureMin),
+          )
         : PointVector(offset.dx, offset.dy);
     setState(() {
       line!.points.add(point);
@@ -163,7 +171,12 @@ class PaintControlsViewState extends State<PaintControlsView> {
       child: Container(
         width: 40,
         height: 40,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white.withOpacity(.2), border: isSelected == true ? Border.all(width: 1, color: Colors.white) : null),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white.withOpacity(.2),
+            border: isSelected == true
+                ? Border.all(width: 1, color: Colors.white)
+                : null),
         child: Icon(
           icon,
           size: 30,

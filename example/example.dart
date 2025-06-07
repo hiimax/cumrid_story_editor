@@ -1,10 +1,10 @@
 
 import 'dart:io';
 
+import 'package:cumrid_story_editor/flutter_story_editor.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_story_editor/flutter_story_editor.dart';
-import 'package:flutter_story_editor/src/controller/controller.dart';
+import 'package:cumrid_story_editor/src/controller/controller.dart';
 
 import 'package:path/path.dart' as path;
 

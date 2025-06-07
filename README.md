@@ -1,4 +1,4 @@
-# flutter_story_editor [![Pub](https://img.shields.io/pub/v/flutter_story_editor.svg)](https://pub.dev/packages/flutter_story_editor)
+# cumrid_story_editor [![Pub](https://img.shields.io/pub/v/cumrid_story_editor.svg)](https://pub.dev/packages/cumrid_story_editor)
 
 This package is created using style of the WhatsApp story image/video editor, with which you can edit images and videos both together. You can add texts, stickers, freehand finger drawing, apply filter, and undo. The edited images will be returned in a **onSave** call back as **List of Files**. You can then upload it to some storage or save it locally to your gallery.
 
@@ -41,7 +41,7 @@ This package is created using style of the WhatsApp story image/video editor, wi
 
 ## Installation
 
-Add flutter_story_editor: latest_version to your **pubspec.yaml** and then import it.
+Add cumrid_story_editor: latest_version to your **pubspec.yaml** and then import it.
 
 ```dartimport 'package:stories_editor/stories_editor.dart';```
 
@@ -153,7 +153,7 @@ Draw freehand painting over images
 
 ## Must read
 
-The initial release of `flutter_story_editor` may have small bugs, and issues. If you found some, and you're willing to contribute feel free to create issue and rasie a PR. Make sure you inform me through my [LinkedIn DM](https://www.linkedin.com/in/muhammad-adnan-23bb8821b/)  for the issues you create in both cases either or not if you want to contribute.
+The initial release of `cumrid_story_editor` may have small bugs, and issues. If you found some, and you're willing to contribute feel free to create issue and rasie a PR. Make sure you inform me through my [LinkedIn DM](https://www.linkedin.com/in/muhammad-adnan-23bb8821b/)  for the issues you create in both cases either or not if you want to contribute.
 
 This package will be improved more along the time, your contribution will be very invaluable.
 
