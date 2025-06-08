@@ -2,18 +2,18 @@ library;
 
 import 'dart:async';
 import 'dart:io';
+
+import 'package:cumrid_story_editor/src/controller/controller.dart';
+import 'package:cumrid_story_editor/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:cumrid_story_editor/src/controller/controller.dart';
-import 'package:cumrid_story_editor/src/utils/utils.dart';
 
 import 'src/const/filters.dart';
 import 'src/enums/story_editing_modes.dart';
 import 'src/models/stroke.dart';
 import 'src/views/main_control_views/image_view.dart';
 import 'src/views/main_control_views/main_controls_view.dart';
-import 'src/views/main_control_views/trimmer_view.dart';
 import 'src/views/paint_control_views/paint_controls_view.dart';
 import 'src/views/sticker_control_views/sticker_control_view.dart';
 import 'src/widgets/draggable_sticker_widget.dart';
@@ -187,28 +187,31 @@ class _FlutterStoryEditorState extends State<FlutterStoryEditor> {
                                       uiViewEditableFiles!.indexOf(singleStory);
                                   // if the selected file was video show [TrimmerView]
                                   if (isVideo(singleStory)) {
-                                    return TrimmerView(
-                                      lines: widget.controller
-                                          .uiEditableFileLines[storyIndex],
-                                      trimOnAdjust: widget.trimVideoOnAdjust,
-                                      onTrimCompleted: (file) async {
-                                        await generateThumbnail(file)
-                                            .then((generatedThumbnail) {
-                                          setState(() {
-                                            _thumbnails[file] =
-                                                generatedThumbnail;
-                                          });
-                                        });
-                                        setState(() {
-                                          widget.selectedFiles![storyIndex] =
-                                              file;
-                                        });
-                                      },
-                                      key: ValueKey(singleStory.path),
-                                      file: singleStory,
-                                      pageController: _pageController,
-                                      pageIndex: storyIndex,
+                                    return Column(
+                                      children: [],
                                     );
+                                    // return TrimmerView(
+                                    //   lines: widget.controller
+                                    //       .uiEditableFileLines[storyIndex],
+                                    //   trimOnAdjust: widget.trimVideoOnAdjust,
+                                    //   onTrimCompleted: (file) async {
+                                    //     await generateThumbnail(file)
+                                    //         .then((generatedThumbnail) {
+                                    //       setState(() {
+                                    //         _thumbnails[file] =
+                                    //             generatedThumbnail;
+                                    //       });
+                                    //     });
+                                    //     setState(() {
+                                    //       widget.selectedFiles![storyIndex] =
+                                    //           file;
+                                    //     });
+                                    //   },
+                                    //   key: ValueKey(singleStory.path),
+                                    //   file: singleStory,
+                                    //   pageController: _pageController,
+                                    //   pageIndex: storyIndex,
+                                    // );
                                   } else {
                                     // if the selected file was image show [ImageView]
                                     return GestureDetector(
